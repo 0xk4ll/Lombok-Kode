@@ -9,6 +9,14 @@ const PricingSection = () => {
   const activeCategory =
     pricingCategories.find((c) => c.id === activeTab) || pricingCategories[0];
 
+  const handleSelectPlan = (planName) => {
+    const message = `Halo, saya tertarik dengan paket ${planName}. Bisa jelaskan lebih detail?`;
+    const whatsappUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <section id="pricing" className="py-24 bg-white scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -108,6 +116,7 @@ const PricingSection = () => {
                 </ul>
 
                 <button
+                  onClick={() => handleSelectPlan(plan.name)}
                   className={`w-full py-3 rounded-lg font-semibold transition-colors mt-auto ${
                     plan.highlight
                       ? "bg-primary-500 hover:bg-primary-600 text-white"
